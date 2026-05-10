@@ -1,47 +1,27 @@
-"use client";
 import { RiseHeader } from "@/components/header/RiseHeader";
 import { PlatformLogoStrip } from "./PlatformLogoStrip";
-import { useEffect, useState } from "react";
 import { heroImages } from "@/data/home";
 
+export const dynamic = "force-dynamic";
+
 export function HomeHero() {
-  const [images, setImages] = useState<{ bg: string; inline: string } | null>(null);
+  // Pick two different random images on the server
+  const bgIndex = Math.floor(Math.random() * heroImages.length);
+  let inlineIndex = Math.floor(Math.random() * heroImages.length);
 
-  useEffect(() => {
-    // Pick two different random images
-    const bgIndex = Math.floor(Math.random() * heroImages.length);
-    let inlineIndex = Math.floor(Math.random() * heroImages.length);
-    
-    // Ensure inline image is different if we have enough images
-    if (heroImages.length > 1) {
-      while (inlineIndex === bgIndex) {
-        inlineIndex = Math.floor(Math.random() * heroImages.length);
-      }
+  // Ensure inline image is different if we have enough images
+  if (heroImages.length > 1) {
+    while (inlineIndex === bgIndex) {
+      inlineIndex = Math.floor(Math.random() * heroImages.length);
     }
-
-    setImages({
-      bg: heroImages[bgIndex],
-      inline: heroImages[inlineIndex],
-    });
-  }, []);
-
-  // Use placeholders or first images during hydration to avoid layout shift if possible,
-  // but since we want "every refresh", client-side only is safest for randomization.
-  if (!images) {
-    return (
-      <section className="r7-home-hero">
-        <div className="r7-hero-media" aria-hidden="true">
-          <div className="r7-hero-media-overlay" />
-          <div className="r7-hero-media-blur" />
-        </div>
-        <RiseHeader />
-        <div className="r7-hero-center">
-          {/* Skeleton or empty space to maintain layout */}
-          <div className="h-[400px]" />
-        </div>
-      </section>
-    );
   }
+
+  const images = {
+    bg: heroImages[bgIndex],
+    inline: heroImages[inlineIndex],
+  };
+
+
 
   return (
     <section className="r7-home-hero">
@@ -100,10 +80,11 @@ export function HomeHero() {
 
             <span className="r7-hero-inline-image-wrap" aria-hidden="true">
               <img
-                src={images.bg}
+                src={images.inline}
                 alt=""
                 className="r7-hero-inline-image"
               />
+
             </span>
 
             <span>Leaders</span>
