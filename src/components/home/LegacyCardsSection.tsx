@@ -73,97 +73,35 @@ export function LegacyCardsSection() {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "bottom bottom",
-            scrub: 1.2,
+            end: "+=600%", // 600% of viewport height for scrolling
+            scrub: 1,
+            pin: true,
             invalidateOnRefresh: true,
           },
         });
 
         timeline
-          // Transition 1: Card 0 exit, Card 1 enter (Duration 1)
-          .to(
-            cards[0],
-            {
-              x: -150,
-              y: exitTop.y,
-              rotate: -12,
-              autoAlpha: 0,
-              zIndex: 5,
-              ease: "none",
-              duration: 1,
-            },
-            0,
-          )
-          .to(
-            cards[1],
-            {
-              ...active,
-              autoAlpha: 1,
-              zIndex: 30,
-              ease: "none",
-              duration: 1,
-            },
-            0,
-          )
-          .to(
-            cards[2],
-            {
-              ...behindOne,
-              autoAlpha: 1,
-              zIndex: 20,
-              ease: "none",
-              duration: 1,
-            },
-            0,
-          )
-          // Hold Card 1 (Duration 2.5, from t=1 to t=3.5)
-          // Transition 2: Card 1 exit, Card 2 enter (Duration 1)
-          .to(
-            cards[1],
-            {
-              x: 150,
-              y: exitTop.y,
-              rotate: 12,
-              autoAlpha: 0,
-              zIndex: 5,
-              ease: "none",
-              duration: 1,
-            },
-            3.5,
-          )
-          .to(
-            cards[2],
-            {
-              ...active,
-              autoAlpha: 1,
-              zIndex: 30,
-              ease: "none",
-              duration: 1,
-            },
-            3.5,
-          )
-          // Hold Card 2 (Duration 3, from t=4.5 to t=7.5)
-          // Transition 3: Card 2 exit (Duration 1, starts at t=7.5)
-          .to(
-            cards[2],
-            {
-              x: -150,
-              y: exitTop.y,
-              rotate: -12,
-              autoAlpha: 0,
-              zIndex: 5,
-              ease: "none",
-              duration: 1,
-            },
-            7.5,
-          )
-          // Massive Final Buffer (Hold empty stage until t=11)
-          .to({}, { duration: 2.5 }, 8.5);
+          // Stage 1: Card 0 is active.
+          // Scroll 0 -> 1: Card 0 exits, Card 1 becomes active, Card 2 moves up.
+          .to(cards[0], { x: -200, y: exitTop.y, rotate: -15, autoAlpha: 0, zIndex: 5, duration: 1 }, 0)
+          .to(cards[1], { ...active, autoAlpha: 1, zIndex: 30, duration: 1 }, 0)
+          .to(cards[2], { ...behindOne, autoAlpha: 1, zIndex: 20, duration: 1 }, 0)
+          
+          // Scroll 1 -> 2: Hold Card 1 active.
+          .to({}, { duration: 1 }) 
 
+          // Scroll 2 -> 3: Card 1 exits, Card 2 becomes active.
+          .to(cards[1], { x: 200, y: exitTop.y, rotate: 15, autoAlpha: 0, zIndex: 5, duration: 1 }, 2)
+          .to(cards[2], { ...active, autoAlpha: 1, zIndex: 30, duration: 1 }, 2)
 
+          // Scroll 3 -> 5: Hold Card 2 active for a long time.
+          .to({}, { duration: 2 })
 
-
-
+          // Scroll 5 -> 6: Card 2 exits.
+          .to(cards[2], { x: -200, y: exitTop.y, rotate: -15, autoAlpha: 0, zIndex: 5, duration: 1 }, 5)
+          
+          // Final buffer
+          .to({}, { duration: 0.5 });
 
 
         return () => {
