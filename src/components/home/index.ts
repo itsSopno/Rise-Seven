@@ -12,3 +12,4 @@ export * from "./PlatformLogoStrip";
 export * from "./SearchPlatforms";
 export * from "./Services";
 export * from "./WhatsNew";
+export * from './topBanner/topbanner'
