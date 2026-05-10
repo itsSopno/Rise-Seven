@@ -74,12 +74,13 @@ export function LegacyCardsSection() {
             trigger: section,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.9,
+            scrub: 1.2,
             invalidateOnRefresh: true,
           },
         });
 
         timeline
+          // Transition 1: Card 0 exit, Card 1 enter (Duration 1)
           .to(
             cards[0],
             {
@@ -88,7 +89,7 @@ export function LegacyCardsSection() {
               rotate: -14,
               scale: 0.92,
               autoAlpha: 0,
-              ease: "none",
+              ease: "power2.inOut",
               duration: 1,
             },
             0,
@@ -98,7 +99,7 @@ export function LegacyCardsSection() {
             {
               ...active,
               autoAlpha: 1,
-              ease: "none",
+              ease: "power2.inOut",
               duration: 1,
             },
             0,
@@ -108,11 +109,13 @@ export function LegacyCardsSection() {
             {
               ...behindOne,
               autoAlpha: 1,
-              ease: "none",
+              ease: "power2.inOut",
               duration: 1,
             },
             0,
           )
+          // Hold Card 1 (Duration 1, from t=1 to t=2)
+          // Transition 2: Card 1 exit, Card 2 enter (Duration 1, starts at t=2)
           .to(
             cards[1],
             {
@@ -121,21 +124,23 @@ export function LegacyCardsSection() {
               rotate: 14,
               scale: 0.92,
               autoAlpha: 0,
-              ease: "none",
+              ease: "power2.inOut",
               duration: 1,
             },
-            1,
+            2,
           )
           .to(
             cards[2],
             {
               ...active,
               autoAlpha: 1,
-              ease: "none",
+              ease: "power2.inOut",
               duration: 1,
             },
-            1,
+            2,
           )
+          // Hold Card 2 (Duration 1, from t=3 to t=4)
+          // Transition 3: Card 2 exit (Duration 1, starts at t=4)
           .to(
             cards[2],
             {
@@ -144,11 +149,12 @@ export function LegacyCardsSection() {
               rotate: -13,
               scale: 0.92,
               autoAlpha: 0,
-              ease: "none",
+              ease: "power2.inOut",
               duration: 1,
             },
-            2,
+            4,
           );
+
 
         return () => {
           timeline.scrollTrigger?.kill();
