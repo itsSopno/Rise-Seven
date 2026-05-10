@@ -7,6 +7,7 @@ import {
   ServicesSection,
   LegacyMarqueeSection,
   LegacyCardsSection,
+  WhatsNew,
 } from "@/components/home";
 import TopBanner from "@/components/home/topBanner/topbanner";
 
@@ -22,6 +23,8 @@ export default function Home() {
       <ServicesSection />
       <LegacyMarqueeSection />
       <LegacyCardsSection />
+      <WhatsNew />
     </main>
   );
 }
+
