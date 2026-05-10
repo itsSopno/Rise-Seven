@@ -139,8 +139,8 @@ export function LegacyCardsSection() {
             },
             2,
           )
-          // Hold Card 2 (Duration 1, from t=3 to t=4)
-          // Transition 3: Card 2 exit (Duration 1, starts at t=4)
+          // Hold Card 2 (Duration 1.5, from t=3 to t=4.5)
+          // Transition 3: Card 2 exit (Duration 1, starts at t=4.5)
           .to(
             cards[2],
             {
@@ -152,8 +152,11 @@ export function LegacyCardsSection() {
               ease: "power2.inOut",
               duration: 1,
             },
-            4,
-          );
+            4.5,
+          )
+          // Final Buffer (Hold empty stage until t=6)
+          .to({}, { duration: 0.5 }, 5.5);
+
 
 
         return () => {
