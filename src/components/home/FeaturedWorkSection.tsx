@@ -6,88 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type FeaturedProject = {
-  title: string;
-  meta: string;
-  category: string;
-  href: string;
-  image: string;
-  color: string;
-  hoverTitle: string;
-};
+import { featuredProjects, type FeaturedProject } from "@/data/home";
 
-const featuredProjects: FeaturedProject[] = [
-  {
-    title: "SIXT",
-    meta: "[2023-2025]",
-    category: "Car rental",
-    href: "/work/sixt/",
-    color: "#cb7b3a",
-    hoverTitle: "Driving organic visibility for SIXT",
-    image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/Logos/Client/Black/sixt-1.jpg?w=1600&h=1200&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847611&s=b5b3d324e0455061c60fe917b85d106c",
-  },
-  {
-    title: "Dojo - B2B",
-    meta: "[2021-2025]",
-    category: "Card Machines",
-    href: "/work/dojo/",
-    color: "#fdd8c4",
-    hoverTitle: "A B2B success story for Dojo card machines",
-    image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/dojo-go-product-shot-1.jpg?w=1600&h=1200&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847714&s=22e15e8ff19558f300183bc7ebc1b0ff",
-  },
-  {
-    title: "Magnet Trade - B2B",
-    meta: "[2023-2024]",
-    category: "B2B",
-    href: "/work/magnet-trade-b2b/",
-    color: "#d8c4fd",
-    hoverTitle: "A full service SEO success story 170%+ increase",
-    image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/Screenshot-2026-02-07-at-17.01.43.png?w=1600&h=1200&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1770483725&s=f1d98712e630df66aaf9b713ce70db2d",
-  },
-  {
-    title: "Leading E Sim brand globally",
-    meta: "[2023-2025]",
-    category: "Esims",
-    href: "/work/esim/",
-    color: "#ca7b3a",
-    hoverTitle: "Increasing brand and non brand visibility UK/ES",
-    image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/eSIM-Europe-p1-what-is-eSIM-2-1.jpg?w=1600&h=1200&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1761234573&s=9ef283005801f5f7607377f62cc54be8",
-  },
-  {
-    title: "JD Sports",
-    meta: "[2025]",
-    category: "Trainers",
-    href: "/work/jd-sports/",
-    color: "#459dd0",
-    hoverTitle: "65% up YoY in clicks for JD Sports FR, IT, ES",
-    image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/maxresdefault_2025-10-22-141838_nmnu.jpg?w=1600&h=1200&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1761142718&s=19d31221b717bb829b65ed531322d432",
-  },
-  {
-    title: "Parkdean Resorts",
-    meta: "[2018-2025]",
-    category: "Travel",
-    href: "/work/parkdean-resorts/",
-    color: "#b6d8ff",
-    hoverTitle: "Search growth for UK holiday parks",
-    image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/easter-breaks.jpg?w=1600&h=1200&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847715&s=e29b3435cbe0e68f30856e79714a50f3",
-  },
-  {
-    title: "Pooky",
-    meta: "[2025]",
-    category: "Homeware",
-    href: "/work/pooky/",
-    color: "#d6b985",
-    hoverTitle: "Creating searchable demand for interiors",
-    image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/Pooky-Rechargable-Doorstop-Cordless-100-Straight-Empire-Pendant-Silk-Ikat-Shade-in-Black-and-Cream-Atlas-44-Single-chukka-Cordless-95-scaled-1-1.jpg?w=1600&h=1200&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847623&s=5e3e3b48f331495fa309422c715b5b6d",
-  },
-];
 
 function getTitleStep() {
   if (typeof window === "undefined") return 58;

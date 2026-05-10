@@ -1,12 +1,14 @@
-import { ReportBanner } from "@/components/header/RiseHeader";
-// import { HomeHero } from "@/components/home/Hero";
-import { LogoMarquee } from "@/components/home/LogoMarquee";
-import { DemandDiscoverySection } from "@/components/home/DemandDiscoverySection";
-import { HomeHero } from "@/components/home/Hero";
-import { FeaturedWorkSection } from "@/components/home/FeaturedWorkSection";
-import { ServicesSection } from "@/components/home/ServicesSection";
-import { LegacyMarqueeSection } from "@/components/home/LegacyMarqueeSection";
-import { LegacyCardsSection } from "@/components/home/LegacyCardsSection";
+import { ReportBanner } from "@/components/header";
+import {
+  HomeHero,
+  LogoMarquee,
+  DemandDiscoverySection,
+  FeaturedWorkSection,
+  ServicesSection,
+  LegacyMarqueeSection,
+  LegacyCardsSection,
+} from "@/components/home";
+
 
 export default function Home() {
   return (
