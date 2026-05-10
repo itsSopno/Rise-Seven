@@ -11,6 +11,44 @@
   --ease-r7: cubic-bezier(0.135, 0.9, 0.15, 1);
 }
 
+.r7-container {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 28px;
+}
+
+@media (min-width: 1024px) {
+  .r7-container {
+    padding-inline: 40px;
+  }
+}
+
+/* =========================
+   News Section
+========================= */
+
+.r7-news-section {
+  position: relative;
+  width: 100%;
+}
+
+.r7-news-headline span {
+  display: inline-block;
+}
+
+.r7-news-inline-img-wrap {
+  transform: translateY(-0.05em);
+}
+
+.r7-news-card {
+  transition: transform 0.4s var(--ease-r7);
+}
+
+.r7-news-card:hover {
+  transform: translateY(-8px);
+}
+
 *,
 *::before,
 *::after {
