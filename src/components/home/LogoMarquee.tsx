@@ -38,6 +38,8 @@ function LogoItem({ logo }: { logo: MarqueeLogo }) {
           alt={logo.name}
           className="r7-marquee-logo"
           draggable={false}
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
         />
       </div>
     </div>

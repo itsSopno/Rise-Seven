@@ -3024,7 +3024,7 @@ body.menu-locked .r7-report-banner {
   height: 100%;
   align-items: center;
   justify-content: center;
-  will-change: transform, opacity, visibility;
+  will-change: auto;
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
