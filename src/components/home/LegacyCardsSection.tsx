@@ -73,35 +73,41 @@ export function LegacyCardsSection() {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+=600%", // 600% of viewport height for scrolling
-            scrub: 1,
+            end: "+=700%", 
+            scrub: true,
             pin: true,
             invalidateOnRefresh: true,
           },
         });
 
         timeline
-          // Stage 1: Card 0 is active.
-          // Scroll 0 -> 1: Card 0 exits, Card 1 becomes active, Card 2 moves up.
-          .to(cards[0], { x: -200, y: exitTop.y, rotate: -15, autoAlpha: 0, zIndex: 5, duration: 1 }, 0)
-          .to(cards[1], { ...active, autoAlpha: 1, zIndex: 30, duration: 1 }, 0)
-          .to(cards[2], { ...behindOne, autoAlpha: 1, zIndex: 20, duration: 1 }, 0)
+          // 1. Initial Hold (Duration 1)
+          .to({}, { duration: 1 })
+
+          // 2. Card 0 Exits, Card 1 enters center (t=1 to t=2)
+          .to(cards[0], { y: exitTop.y, rotate: -10, autoAlpha: 0, duration: 1 }, 1)
+          .to(cards[1], { ...active, duration: 1 }, 1)
+          .to(cards[2], { ...behindOne, duration: 1 }, 1)
+          .set(cards[1], { zIndex: 50 }, 2)
+
+          // 3. Hold Card 1 (t=2 to t=3.5)
+          .to({}, { duration: 1.5 })
+
+          // 4. Card 1 Exits, Card 2 enters center (t=3.5 to t=4.5)
+          .to(cards[1], { y: exitTop.y, rotate: 10, autoAlpha: 0, duration: 1 }, 3.5)
+          .to(cards[2], { ...active, duration: 1 }, 3.5)
+          .set(cards[2], { zIndex: 60 }, 4.5)
+
+          // 5. Long Hold for Card 2 (t=4.5 to t=7.5)
+          .to({}, { duration: 3 })
+
+          // 6. Final Exit for Card 2 (t=7.5 to t=8.5)
+          .to(cards[2], { y: exitTop.y, rotate: -10, autoAlpha: 0, duration: 1 }, 7.5)
           
-          // Scroll 1 -> 2: Hold Card 1 active.
-          .to({}, { duration: 1 }) 
-
-          // Scroll 2 -> 3: Card 1 exits, Card 2 becomes active.
-          .to(cards[1], { x: 200, y: exitTop.y, rotate: 15, autoAlpha: 0, zIndex: 5, duration: 1 }, 2)
-          .to(cards[2], { ...active, autoAlpha: 1, zIndex: 30, duration: 1 }, 2)
-
-          // Scroll 3 -> 5: Hold Card 2 active for a long time.
-          .to({}, { duration: 2 })
-
-          // Scroll 5 -> 6: Card 2 exits.
-          .to(cards[2], { x: -200, y: exitTop.y, rotate: -15, autoAlpha: 0, zIndex: 5, duration: 1 }, 5)
-          
-          // Final buffer
+          // 7. Final Buffer
           .to({}, { duration: 0.5 });
+
+
 
 
         return () => {
