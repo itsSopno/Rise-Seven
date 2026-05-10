@@ -1,13 +1,11 @@
-Head{
-  padding-left: 15px;
-  padding-right: 15px;
+/* Head{
   padding-top: 15px;
   padding-bottom: 15px;
-}
+} */
 .top-banner {
   background-color: #ADFFC8;
   color: #000000;
-  padding: 9px 16px;
+  /* padding: 9px 16px; */
   width: 100%;
   z-index: 100;
   position: relative;
