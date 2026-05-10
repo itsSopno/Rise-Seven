@@ -22,7 +22,6 @@ export default function Home() {
       <ServicesSection />
       <LegacyMarqueeSection />
       <LegacyCardsSection />
-      <ServicesSection />
     </main>
   );
 }
