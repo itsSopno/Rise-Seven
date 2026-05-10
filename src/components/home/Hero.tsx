@@ -1,12 +1,53 @@
+"use client";
 import { RiseHeader } from "@/components/header/RiseHeader";
 import { PlatformLogoStrip } from "./PlatformLogoStrip";
+import { useEffect, useState } from "react";
+import { heroImages } from "@/data/home";
 
 export function HomeHero() {
+  const [images, setImages] = useState<{ bg: string; inline: string } | null>(null);
+
+  useEffect(() => {
+    // Pick two different random images
+    const bgIndex = Math.floor(Math.random() * heroImages.length);
+    let inlineIndex = Math.floor(Math.random() * heroImages.length);
+    
+    // Ensure inline image is different if we have enough images
+    if (heroImages.length > 1) {
+      while (inlineIndex === bgIndex) {
+        inlineIndex = Math.floor(Math.random() * heroImages.length);
+      }
+    }
+
+    setImages({
+      bg: heroImages[bgIndex],
+      inline: heroImages[inlineIndex],
+    });
+  }, []);
+
+  // Use placeholders or first images during hydration to avoid layout shift if possible,
+  // but since we want "every refresh", client-side only is safest for randomization.
+  if (!images) {
+    return (
+      <section className="r7-home-hero">
+        <div className="r7-hero-media" aria-hidden="true">
+          <div className="r7-hero-media-overlay" />
+          <div className="r7-hero-media-blur" />
+        </div>
+        <RiseHeader />
+        <div className="r7-hero-center">
+          {/* Skeleton or empty space to maintain layout */}
+          <div className="h-[400px]" />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="r7-home-hero">
       <div className="r7-hero-media" aria-hidden="true">
         <img
-          src="https://rise-atseven.transforms.svdcdn.com/production/images/Pooky-Rechargable-Doorstop-Cordless-100-Straight-Empire-Pendant-Silk-Ikat-Shade-in-Black-and-Cream-Atlas-44-Single-chukka-Cordless-95-scaled-1-1.jpg?w=2560&h=1707&q=100&auto=format&fit=crop&dm=1750847623&s=2e6f5684a2dcbdbd148a651a17aafe47"
+          src={images.bg}
           alt=""
           className="r7-hero-media-img"
         />
@@ -59,7 +100,7 @@ export function HomeHero() {
 
             <span className="r7-hero-inline-image-wrap" aria-hidden="true">
               <img
-                src="https://rise-atseven.transforms.svdcdn.com/production/images/b2087e0cd3f699d3efc76f809ec72a85a6ab378e-1080x1350.jpg?w=200&h=200&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847630&s=a668733e8ced1733809794da9c15f062"
+                src={images.bg}
                 alt=""
                 className="r7-hero-inline-image"
               />

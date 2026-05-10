@@ -170,3 +170,11 @@ export const stackCards: StackCard[] = [
     ],
   },
 ];
+
+export const heroImages = [
+  "/hero/Emirates-airpline-in-flight.webp",
+  "/hero/Pooky-Rechargable-Doorstop-Cordless-100-Straight-Empire-Pendant-Silk-Ikat-Shade-in-Black-and-Cream-Atlas-44-Single-chukka-Cordless-95-scaled-1-1.webp",
+  "/hero/spaseekers.webp",
+  "/hero/unnamed-6.webp",
+];
+
