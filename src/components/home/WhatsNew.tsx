@@ -42,22 +42,18 @@ export function WhatsNew() {
                 />
               </div>
 
-              {/* Meta Data */}
-              <div className="r7-news-meta">
-                <div className="r7-news-author">
-                  <div className="r7-news-author-img">
-                    {item.authorImage ? (
-                      <img src={item.authorImage} alt={item.author} />
-                    ) : (
-                      <div className="r7-news-author-placeholder">
-                        <User size={12} />
-                      </div>
-                    )}
-                  </div>
+              {/* Meta Data Row */}
+              <div className="r7-news-meta-row">
+                <div className="r7-news-meta-pill">
+                  {item.authorImage ? (
+                    <img src={item.authorImage} alt={item.author} className="r7-news-author-avatar" />
+                  ) : (
+                    <User size={10} />
+                  )}
                   <span>{item.author}</span>
                 </div>
-                <div className="r7-news-read-time">
-                  <Clock size={14} />
+                <div className="r7-news-meta-pill">
+                  <Clock size={10} />
                   <span>{item.readTime}</span>
                 </div>
               </div>
@@ -69,6 +65,7 @@ export function WhatsNew() {
             </article>
           ))}
         </div>
+
       </div>
     </section>
   );
