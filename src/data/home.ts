@@ -178,3 +178,39 @@ export const heroImages = [
   "/hero/unnamed-6.webp",
 ];
 
+export type NewsItem = {
+  title: string;
+  author: string;
+  authorImage?: string;
+  readTime: string;
+  image: string;
+  category?: string;
+};
+
+export const newsItems: NewsItem[] = [
+  {
+    title: "Rise at Seven Appoints Hollie Lovell as Senior Operations Lead",
+    author: "Ray Saddiq",
+    readTime: "3 mins",
+    image:
+      "https://rise-atseven.transforms.svdcdn.com/production/images/SN.webp?w=600&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5338&fp-y=0.5169&dm=1777373493&s=94f8efbf206ee393e9efb44ef6828658",
+  },
+  {
+    title:
+      "Rise at Seven Exits Sheffield and Triples Manchester as new HQ as they go for global expansion",
+    author: "Ray Saddiq",
+    readTime: "2 mins",
+    image:
+      "https://rise-atseven.transforms.svdcdn.com/production/images/Screenshot-2025-06-23-at-23.14.49.png?w=2000&h=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847626&s=a51fa90e59f4de7a51395aaed8e58428",
+  },
+  {
+    title: "Ryan McNamara Is Now Rise at Seven's Global Operations Director",
+    author: "Carrie Rose",
+    readTime: "2 mins",
+    category: "News",
+    image:
+      "https://rise-atseven.transforms.svdcdn.com/production/images/WhatsApp-Image-2025-06-03-at-08.34.50.jpeg?w=2000&h=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1766399268&s=7b53d90905d984816762e873a47f385d",
+  },
+];
+
+
