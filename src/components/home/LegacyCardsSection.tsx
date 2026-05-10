@@ -73,7 +73,7 @@ export function LegacyCardsSection() {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+=700%", 
+            end: "+=400%", 
             scrub: true,
             pin: true,
             invalidateOnRefresh: true,
@@ -81,31 +81,32 @@ export function LegacyCardsSection() {
         });
 
         timeline
-          // 1. Initial Hold (Duration 1)
+          // 1. Brief Initial Hold (Duration 0.5)
+          .to({}, { duration: 0.5 })
+
+          // 2. Card 0 Exits, Card 1 enters center (t=0.5 to t=1.5)
+          .to(cards[0], { y: exitTop.y, rotate: -10, autoAlpha: 0, duration: 1 }, 0.5)
+          .to(cards[1], { ...active, duration: 1 }, 0.5)
+          .to(cards[2], { ...behindOne, duration: 1 }, 0.5)
+          .set(cards[1], { zIndex: 50 }, 1.5)
+
+          // 3. Hold Card 1 (t=1.5 to t=2.5)
           .to({}, { duration: 1 })
 
-          // 2. Card 0 Exits, Card 1 enters center (t=1 to t=2)
-          .to(cards[0], { y: exitTop.y, rotate: -10, autoAlpha: 0, duration: 1 }, 1)
-          .to(cards[1], { ...active, duration: 1 }, 1)
-          .to(cards[2], { ...behindOne, duration: 1 }, 1)
-          .set(cards[1], { zIndex: 50 }, 2)
+          // 4. Card 1 Exits, Card 2 enters center (t=2.5 to t=3.5)
+          .to(cards[1], { y: exitTop.y, rotate: 10, autoAlpha: 0, duration: 1 }, 2.5)
+          .to(cards[2], { ...active, duration: 1 }, 2.5)
+          .set(cards[2], { zIndex: 60 }, 3.5)
 
-          // 3. Hold Card 1 (t=2 to t=3.5)
+          // 5. Hold Card 2 (t=3.5 to t=5)
           .to({}, { duration: 1.5 })
 
-          // 4. Card 1 Exits, Card 2 enters center (t=3.5 to t=4.5)
-          .to(cards[1], { y: exitTop.y, rotate: 10, autoAlpha: 0, duration: 1 }, 3.5)
-          .to(cards[2], { ...active, duration: 1 }, 3.5)
-          .set(cards[2], { zIndex: 60 }, 4.5)
-
-          // 5. Long Hold for Card 2 (t=4.5 to t=7.5)
-          .to({}, { duration: 3 })
-
-          // 6. Final Exit for Card 2 (t=7.5 to t=8.5)
-          .to(cards[2], { y: exitTop.y, rotate: -10, autoAlpha: 0, duration: 1 }, 7.5)
+          // 6. Final Exit for Card 2 (t=5 to t=6)
+          .to(cards[2], { y: exitTop.y, rotate: -10, autoAlpha: 0, duration: 1 }, 5)
           
           // 7. Final Buffer
           .to({}, { duration: 0.5 });
+
 
 
 

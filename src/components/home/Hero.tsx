@@ -80,7 +80,7 @@ export function HomeHero() {
 
             <span className="r7-hero-inline-image-wrap" aria-hidden="true">
               <img
-                src={images.inline}
+                src={images.bg}
                 alt=""
                 className="r7-hero-inline-image"
               />
