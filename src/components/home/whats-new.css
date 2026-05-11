@@ -238,18 +238,19 @@
   }
 
   .r7-news-card-img-wrap {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1 / 1;
     border-radius: 20px;
   }
 
   .r7-news-card-title {
     font-size: 20px;
+    line-height: 1.2;
   }
 
   .r7-news-explore-btn {
     width: 100%;
     justify-content: center;
-    padding: 12px;
+    padding: 16px;
     background: #fff;
     order: 3;
     margin-top: 20px;
