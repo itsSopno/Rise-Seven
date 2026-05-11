@@ -73,7 +73,7 @@ export function LegacyCardsSection() {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+=400%", 
+            end: "+=300%", 
             scrub: true,
             pin: true,
             invalidateOnRefresh: true,
@@ -102,10 +102,7 @@ export function LegacyCardsSection() {
           .to({}, { duration: 1.5 })
 
           // 6. Final Exit for Card 2 (t=5 to t=6)
-          .to(cards[2], { y: exitTop.y, rotate: -10, autoAlpha: 0, duration: 1 }, 5)
-          
-          // 7. Final Buffer
-          .to({}, { duration: 0.5 });
+          .to(cards[2], { y: exitTop.y, rotate: -10, autoAlpha: 0, duration: 1 }, 5);
 
 
 

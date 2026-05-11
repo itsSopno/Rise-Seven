@@ -3198,7 +3198,7 @@ body.menu-locked .r7-report-banner {
   .r7deck-section {
     height: auto;
     min-height: 0;
-    padding: 72px 16px;
+    padding: 40px 16px;
     overflow: visible;
   }
 

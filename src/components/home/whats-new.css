@@ -6,7 +6,7 @@
 }
 
 .r7-news-section {
-  padding: 60px 20px;
+  padding: 20px 20px 80px; /* Reduced top padding from 60px to 20px */
   background-color: var(--r7-bg);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
