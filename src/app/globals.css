@@ -3216,8 +3216,12 @@ body.menu-locked .r7-report-banner {
     z-index: 1;
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
-    text-align: center;
+    margin-bottom: 24px;
+    font-size: 14px; /* Matches reference size */
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: capitalize;
+    color: var(--r7-dark);
     transform: none;
   }
 
@@ -3241,24 +3245,29 @@ body.menu-locked .r7-report-banner {
 
   .r7deck-card {
     width: 100%;
-    padding: 28px;
+    padding: 32px 24px;
     border-radius: 20px;
   }
 
   .r7deck-image-wrap {
-    width: 124px;
-    height: 124px;
-    border-radius: 14px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    margin-bottom: 24px;
   }
 
   .r7deck-title {
-    font-size: 48px;
-    line-height: 43px;
-    letter-spacing: -1.68px;
+    font-size: 40px;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
   }
 
   .r7deck-text p {
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
   }
 }

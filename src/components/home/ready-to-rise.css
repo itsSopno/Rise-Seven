@@ -54,3 +54,9 @@
     font-size: clamp(60px, 22vw, 160px);
   }
 }
+
+@media (max-width: 767px) {
+  .r7-ready-wrap {
+    display: none;
+  }
+}
