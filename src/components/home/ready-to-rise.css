@@ -1,90 +1,48 @@
-.r7-ready-section {
-  position: relative;
-  width: 100%;
-  padding: 180px 0;
-  background-color: #f5f3f0;
+/* ── Outer wrapper — clips overflow so heading can fly left/right ── */
+.r7-ready-wrap {
   overflow: hidden;
+  width: 100%;
+  background-color: #f5f3f0;
+}
+
+/* ── Scroll trigger container — tall so scrub has room to breathe ── */
+.r7-ready-trigger {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  height: 100vh;           /* same as reference lg:h-[100vh] */
+  min-height: 400px;
 }
 
-.r7-ready-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 80px;
-}
-
-.r7-ready-track {
-  width: 100%;
-  display: flex;
+/* ── The single massive heading ─────────────────────────────────── */
+.r7-ready-heading {
+  /* shrink-0 so it never wraps */
+  flex-shrink: 0;
   white-space: nowrap;
+
+  font-size: clamp(100px, 16vw, 260px); /* reference: lg:text-[16vw] */
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #111212;
+
+  /* GSAP will set initial x via fromTo, so start off-screen right */
   will-change: transform;
 }
 
-.r7-ready-text {
-  font-size: clamp(140px, 25vw, 500px);
-  font-weight: 900;
-  line-height: 0.8;
-  letter-spacing: -0.05em;
-  color: #111212;
-  text-transform: capitalize;
-  padding: 0 0.15em;
+/* Individual character spans injected by JS */
+.r7-char {
+  display: inline-block;
+  will-change: transform;
 }
 
-.r7-ready-footer {
-  width: 100%;
-  max-width: 1400px;
-  padding: 0 40px;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.r7-ready-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 20px 48px;
-  background-color: #111212;
-  color: white;
-  border-radius: 100px;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 700;
-  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), background-color 0.3s ease;
-}
-
-.r7-ready-btn:hover {
-  background-color: #000;
-  transform: scale(1.05);
-}
-
-.r7-ready-arrow {
-  font-size: 24px;
-  transition: transform 0.3s ease;
-}
-
-.r7-ready-btn:hover .r7-ready-arrow {
-  transform: translateX(5px);
-}
-
-@media (max-width: 768px) {
-  .r7-ready-section {
-    padding: 80px 0;
+/* ── Mobile: smaller height, smaller font ───────────────────────── */
+@media (max-width: 1024px) {
+  .r7-ready-trigger {
+    height: 35vh;
+    min-height: 250px;
   }
-  
-  .r7-ready-text {
-    font-size: clamp(80px, 30vw, 150px);
-  }
-  
-  .r7-ready-footer {
-    justify-content: center;
-  }
-  
-  .r7-ready-btn {
-    padding: 16px 32px;
-    font-size: 16px;
+
+  .r7-ready-heading {
+    font-size: clamp(60px, 22vw, 160px);
   }
 }

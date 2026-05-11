@@ -7,69 +7,87 @@ import "./ready-to-rise.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Matches the real riseatseven.com "Ready to Rise at Seven?" section:
+ *  - Single huge heading that scrubs horizontally while scrolling
+ *  - Each character also scrubs from yPercent=100, rotate=10 → 0,0
+ *    with back.inOut(4) ease and a long stagger (scroll-scrubbed)
+ */
 export function ReadyToRise() {
-  const containerRef = useRef<HTMLElement>(null);
-  const track1Ref = useRef<HTMLDivElement>(null);
-  const track2Ref = useRef<HTMLDivElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const t1 = track1Ref.current;
-    const t2 = track2Ref.current;
-    const container = containerRef.current;
-    if (!t1 || !t2 || !container) return;
+    const wrap = wrapRef.current;
+    const trigger = triggerRef.current;
+    const heading = headingRef.current;
+    if (!wrap || !trigger || !heading) return;
 
     const ctx = gsap.context(() => {
-      // Row 1 moves left
-      gsap.to(t1, {
-        x: "-20%",
-        scrollTrigger: {
-          trigger: container,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
+      const headingWidth = heading.scrollWidth;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
 
-      // Row 2 moves right
-      gsap.fromTo(t2, 
-        { x: "-30%" },
+      // ── Horizontal scrub: start from right, end at left ──────────
+      gsap.fromTo(
+        heading,
         {
-          x: "0%",
+          x: headingWidth - windowWidth + windowWidth * 0.5,
+        },
+        {
+          x: -(headingWidth - windowWidth + 1000),
+          ease: "none",
           scrollTrigger: {
-            trigger: container,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
+            trigger: trigger,
+            start: "top 70%",
+            end: `+=${headingWidth - windowWidth + windowHeight * 0.35}`,
+            scrub: true,
           },
         }
       );
-    }, container);
+
+      // ── Per-character reveal: tumble in from below with rotation ──
+      // Split the heading text into individual character spans
+      const text = heading.textContent || "";
+      heading.innerHTML = text
+        .split("")
+        .map((ch) =>
+          ch === " "
+            ? `<span class="r7-char" style="display:inline-block">&nbsp;</span>`
+            : `<span class="r7-char" style="display:inline-block">${ch}</span>`
+        )
+        .join("");
+
+      const chars = heading.querySelectorAll<HTMLElement>(".r7-char");
+
+      gsap.set(chars, { yPercent: 110, rotate: 10, transformOrigin: "bottom center" });
+
+      gsap.to(chars, {
+        yPercent: 0,
+        rotate: 0,
+        ease: "back.inOut(4)",
+        stagger: 0.35,
+        duration: 2.5,
+        scrollTrigger: {
+          trigger: trigger,
+          start: "top 77%",
+          end: `+=${headingWidth - windowWidth + 200}`,
+          scrub: true,
+        },
+      });
+    }, wrap);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={containerRef} className="r7-ready-section">
-      <div className="r7-ready-container">
-        <div ref={track1Ref} className="r7-ready-track">
-          <span className="r7-ready-text">Ready to Rise?</span>
-          <span className="r7-ready-text">Ready to Rise?</span>
-          <span className="r7-ready-text">Ready to Rise?</span>
-          <span className="r7-ready-text">Ready to Rise?</span>
-        </div>
-        <div ref={track2Ref} className="r7-ready-track">
-          <span className="r7-ready-text">Ready to Rise?</span>
-          <span className="r7-ready-text">Ready to Rise?</span>
-          <span className="r7-ready-text">Ready to Rise?</span>
-          <span className="r7-ready-text">Ready to Rise?</span>
+    <div ref={wrapRef} className="r7-ready-wrap">
+      <div ref={triggerRef} className="r7-ready-trigger">
+        <div ref={headingRef} className="r7-ready-heading">
+          Ready to Rise at Seven?
         </div>
       </div>
-      
-      <div className="r7-ready-footer">
-        <a href="/contact" className="r7-ready-btn">
-          Let's talk brief <span className="r7-ready-arrow">→</span>
-        </a>
-      </div>
-    </section>
+    </div>
   );
 }
