@@ -1,4 +1,3 @@
-import { ReportBanner } from "@/components/header";
 import {
   HomeHero,
   LogoMarquee,
@@ -8,6 +7,7 @@ import {
   LegacyMarqueeSection,
   LegacyCardsSection,
   WhatsNew,
+  ReadyToRise,
 } from "@/components/home";
 import TopBanner from "@/components/home/topBanner/topbanner";
 
