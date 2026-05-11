@@ -167,11 +167,11 @@ body.menu-locked .r7-report-banner {
   margin-inline: auto;
   height: 64px;
   padding-inline: 24px;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+  color: #111212;
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 40px;
   pointer-events: none;
   transition: transform 0.6s var(--ease-r7), background 0.4s ease;
@@ -179,7 +179,7 @@ body.menu-locked .r7-report-banner {
 }
 
 .r7-site-header.is-hidden {
-  transform: translateY(-120%);
+  transform: translateY(-130%);
 }
 
 .r7-desktop-nav,
@@ -244,8 +244,8 @@ body.menu-locked .r7-report-banner {
   display: inline-flex;
   align-items: center;
   padding: 4px 16px;
-  color: #ffffff;
-  font-size: 16px;
+  color: #111212;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -0.04em;
@@ -308,8 +308,8 @@ body.menu-locked .r7-report-banner {
   padding: 12px 24px;
   border: 1px solid transparent;
   border-radius: 24px;
-  background: #ffffff;
-  color: #111212;
+  background: #111212;
+  color: #ffffff;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
@@ -1114,6 +1114,17 @@ body.menu-locked .r7-report-banner {
     padding: 148px 12px 32px;
   }
 
+  .r7-desktop-nav,
+  .r7-contact-btn {
+    display: none;
+  }
+
+  .r7-mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    height: 64px;
+  }
+
   .r7-awards-block {
     margin-bottom: 26px;
   }
@@ -1139,13 +1150,15 @@ body.menu-locked .r7-report-banner {
   }
 
   .r7-hero-headline {
-    font-size: clamp(58px, 16.5vw, 76px);
-    line-height: 0.92;
-    letter-spacing: -0.07em;
+    font-size: clamp(48px, 15vw, 68px);
+    line-height: 0.88;
+    letter-spacing: -0.06em;
   }
 
   .r7-hero-headline-row {
-    gap: 0.08em;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1em;
   }
 
   .r7-hero-inline-image-wrap {
@@ -1162,7 +1175,23 @@ body.menu-locked .r7-report-banner {
 
   .r7-hero-bottom-left,
   .r7-hero-bottom-right {
-    display: none;
+    position: absolute;
+    bottom: 20px;
+    display: block;
+    max-width: 160px;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.15;
+    opacity: 0.7;
+  }
+
+  .r7-hero-bottom-left {
+    left: 20px;
+  }
+
+  .r7-hero-bottom-right {
+    right: 20px;
+    text-align: right;
   }
 }
 
