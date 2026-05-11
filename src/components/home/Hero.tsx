@@ -1,4 +1,3 @@
-import { RiseHeader } from "@/components/header/RiseHeader";
 import { PlatformLogoStrip } from "./PlatformLogoStrip";
 import { heroImages } from "@/data/home";
 
@@ -36,7 +35,6 @@ export function HomeHero() {
         <div className="r7-hero-media-blur" />
       </div>
 
-      <RiseHeader />
 
       <div className="r7-hero-center">
         <div className="r7-awards-block">

@@ -7,7 +7,6 @@ export * from "./LogoMarquee";
 export * from "./DemandDiscoverySection";
 export * from "./AgencyLogos";
 export * from "./FeaturedWork";
-export * from "./Legacy";
 export * from "./PlatformLogoStrip";
 export * from "./SearchPlatforms";
 export * from "./Services";
