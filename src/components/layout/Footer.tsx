@@ -73,23 +73,21 @@ export function Footer() {
           </div>
 
           {/* Right: Nav Columns */}
-          <nav className="r7-footer-nav">
-            <div className="r7-footer-nav-col">
-              {navCol1.map((l) => (
-                <a key={l.label} href={l.href} className="r7-footer-nav-link">{l.label}</a>
-              ))}
-            </div>
-            <div className="r7-footer-nav-col">
-              {navCol2.map((l) => (
-                <a key={l.label} href={l.href} className="r7-footer-nav-link">{l.label}</a>
-              ))}
-            </div>
-            <div className="r7-footer-nav-col">
-              {navCol3.map((l) => (
-                <a key={l.label} href={l.href} className="r7-footer-nav-link">{l.label}</a>
-              ))}
-            </div>
-          </nav>
+          <div className="r7-footer-nav-col">
+            {navCol1.map((l) => (
+              <a key={l.label} href={l.href} className="r7-footer-nav-link">{l.label}</a>
+            ))}
+          </div>
+          <div className="r7-footer-nav-col">
+            {navCol2.map((l) => (
+              <a key={l.label} href={l.href} className="r7-footer-nav-link">{l.label}</a>
+            ))}
+          </div>
+          <div className="r7-footer-nav-col">
+            {navCol3.map((l) => (
+              <a key={l.label} href={l.href} className="r7-footer-nav-link">{l.label}</a>
+            ))}
+          </div>
         </div>
 
         {/* Big Wordmark */}
