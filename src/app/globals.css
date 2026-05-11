@@ -111,8 +111,24 @@ video {
   max-width: 100%;
 }
 
-body.menu-locked {
+body.menu-locked,
+body.loading-locked {
   overflow: hidden;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 body.menu-locked .r7-report-banner {
@@ -199,7 +215,7 @@ body.menu-locked .r7-report-banner {
   top: var(--header-top, 14px);
   left: 10px;
   right: 10px;
-  width: 100%;
+  width: 99%;
   max-width: none;
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(16px);

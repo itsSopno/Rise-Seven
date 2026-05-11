@@ -193,7 +193,7 @@ export const newsItems: NewsItem[] = [
     author: "Ray Saddiq",
     readTime: "3 mins",
     image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/SN.webp?w=600&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5338&fp-y=0.5169&dm=1777373493&s=94f8efbf206ee393e9efb44ef6828658",
+      "https://rise-atseven.transforms.svdcdn.com/production/images/0B5A8145.jpg?w=4000&h=2668&q=100&auto=format&fit=crop&dm=1778062340&s=c1c2d9a678535c34c10ad5f1bca7bd0d",
   },
   {
     title:
@@ -201,7 +201,7 @@ export const newsItems: NewsItem[] = [
     author: "Ray Saddiq",
     readTime: "2 mins",
     image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/Screenshot-2025-06-23-at-23.14.49.png?w=2000&h=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1750847626&s=a51fa90e59f4de7a51395aaed8e58428",
+      "https://rise-atseven.transforms.svdcdn.com/production/images/WRAS-Manchester-02.png?w=1371&h=768&q=100&auto=format&fit=crop&dm=1778084882&s=d3e393ea9bf81c15105cc264033e2865",
   },
   {
     title: "Ryan McNamara Is Now Rise at Seven's Global Operations Director",
@@ -209,7 +209,7 @@ export const newsItems: NewsItem[] = [
     readTime: "2 mins",
     category: "News",
     image:
-      "https://rise-atseven.transforms.svdcdn.com/production/images/WhatsApp-Image-2025-06-03-at-08.34.50.jpeg?w=2000&h=2000&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1766399268&s=7b53d90905d984816762e873a47f385d",
+      "https://rise-atseven.transforms.svdcdn.com/production/images/WhatsApp-Image-2026-04-29-at-21.48.23-1.jpeg?w=2048&h=1536&q=100&auto=format&fit=crop&dm=1777514556&s=ae9edc4a5406a551bc4b382fe0650652",
   },
 ];
 
