@@ -1,8 +1,26 @@
 import { newsItems } from "@/data/home";
-import { MoveRight, Clock } from "lucide-react";
+import { MoveRight, Clock, ArrowUpRight } from "lucide-react";
 import "./whats-new.css";
 
 export function WhatsNew() {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    // Magnetic effect: scale down the movement a bit to make it feel attached
+    const magneticX = x * 0.3;
+    const magneticY = y * 0.3;
+    
+    e.currentTarget.style.setProperty("--mouse-x", `${magneticX}px`);
+    e.currentTarget.style.setProperty("--mouse-y", `${magneticY}px`);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+    e.currentTarget.style.setProperty("--mouse-x", "0px");
+    e.currentTarget.style.setProperty("--mouse-y", "0px");
+  };
+
   return (
     <section className="r7-news-section">
         <header className="r7-news-header">
@@ -20,10 +38,21 @@ export function WhatsNew() {
 
         <div className="r7-news-grid">
           {newsItems.map((item, index) => (
-            <article key={index} className="r7-news-card">
+            <article 
+              key={index} 
+              className="r7-news-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
               <div className="r7-news-card-img-wrap">
                 {item.category && <span className="r7-news-badge">{item.category}</span>}
                 <img src={item.image} alt={item.title} />
+                
+                <div className="r7-news-card-hover-overlay">
+                  <div className="r7-news-card-hover-circle">
+                    <ArrowUpRight size={32} strokeWidth={2.5} />
+                  </div>
+                </div>
               </div>
 
               <div className="r7-news-meta-row">
