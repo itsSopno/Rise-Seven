@@ -3260,10 +3260,11 @@ body.menu-locked .r7-report-banner {
     width: 100%;
     padding: 32px 24px;
     border-radius: 20px;
-    height: 100%;
+    aspect-ratio: auto; /* Allow height to grow with content */
+    overflow: visible;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content like in Image 2 */
+    align-items: center;
     text-align: center;
   }
 
