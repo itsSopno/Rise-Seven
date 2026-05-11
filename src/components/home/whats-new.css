@@ -195,11 +195,12 @@
   }
 
   .r7-news-header {
-    flex-direction: column;
+    display: flex;
     align-items: flex-start;
     gap: 24px;
     border-bottom: none;
     padding-bottom: 0;
+    font-size: 20px;
   }
 
   .r7-news-headline {
@@ -254,5 +255,6 @@
     background: #fff;
     order: 3;
     margin-top: 20px;
+    display: none;
   }
 }

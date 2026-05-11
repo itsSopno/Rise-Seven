@@ -48,12 +48,31 @@ export default function Preloader() {
   return (
     <div 
       ref={overlayRef} 
-      className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 999999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        pointerEvents: 'none',
+        overflow: 'hidden'
+      }}
     >
       <svg 
         viewBox="0 0 100 100" 
         preserveAspectRatio="none" 
-        className="absolute inset-0 w-full h-full fill-[#b3ffe9]"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          fill: '#ADFFC8'
+        }}
       >
         <path 
           ref={pathRef} 
@@ -61,10 +80,10 @@ export default function Preloader() {
         />
       </svg>
       
-      <div className="relative z-10 flex flex-col items-center">
-        <h1 className="text-black text-4xl font-bold italic tracking-tighter opacity-0 animate-fade-in-up">
+      <div style={{ position: 'relative', zIndex: 10 }}>
+        {/* <h1 className="text-black text-5xl md:text-7xl font-bold italic tracking-tighter opacity-0 animate-fade-in-up">
           RISE AT SEVEN
-        </h1>
+        </h1> */}
       </div>
     </div>
   );
