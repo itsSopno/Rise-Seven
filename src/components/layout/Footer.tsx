@@ -94,8 +94,11 @@ export function Footer() {
         <div className="r7-footer-wordmark">
           <div className="r7-footer-logo-line">
             <span className="r7-footer-logo-text">Rise at Seve</span>
-            <span className="r7-footer-n-slash"></span>
-            <span className="r7-footer-trademark">®</span>
+            <div className="r7-footer-n-container">
+              <span className="r7-footer-n-slash"></span>
+              <span className="r7-footer-n-bar"></span>
+              <span className="r7-footer-trademark">®</span>
+            </div>
           </div>
         </div>
 
