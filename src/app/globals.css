@@ -213,8 +213,8 @@ body.menu-locked .r7-report-banner {
 
 .r7-site-header.is-floating {
   top: var(--header-top, 14px);
-  left: 10px;
-  right: 10px;
+  left: 20px;
+  right: 20px;
   width: 99%;
   max-width: none;
   background: rgba(255, 255, 255, 0.45);
@@ -223,6 +223,12 @@ body.menu-locked .r7-report-banner {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 40px;
   color: #000000;
+}
+
+.r7-site-header.is-floating .r7-logo-link,
+.r7-site-header.is-floating .r7-real-nav-link,
+.r7-site-header.is-floating .r7-mobile-menu-icon {
+  color: #000000 !important;
 }
 /* .r7-site-header.is-floating {
   top: var(--header-top, 14px);
