@@ -94,11 +94,10 @@ export function Footer() {
 
         {/* Big Wordmark */}
         <div className="r7-footer-wordmark">
-          <div className="r7-footer-logo-container">
-            <span className="r7-footer-logo-text">
-              Rise at Seve<span className="r7-footer-n-slash"></span>
-              <span className="r7-footer-trademark">®</span>
-            </span>
+          <div className="r7-footer-logo-line">
+            <span className="r7-footer-logo-text">Rise at Seve</span>
+            <span className="r7-footer-n-slash"></span>
+            <span className="r7-footer-trademark">®</span>
           </div>
         </div>
 
@@ -106,13 +105,13 @@ export function Footer() {
         <div className="r7-footer-bottom">
           <div className="r7-footer-legal">
             <span>© 2025 Rise at Seven Ltd. All rights reserved</span>
-            <span className="r7-footer-dot"> • </span>
+            <span className="r7-footer-dot">•</span>
             <span>Company Number 11950187</span>
-            <span className="r7-footer-dot"> • </span>
+            <span className="r7-footer-dot">•</span>
             <span>VAT Registered GB 322402945</span>
-            <span className="r7-footer-dot"> • </span>
+            <span className="r7-footer-dot">•</span>
             <a href="/privacy-policy/">Privacy Policy</a>
-            <span className="r7-footer-dot"> • </span>
+            <span className="r7-footer-dot">•</span>
             <a href="/terms-conditions/">Terms & conditions</a>
           </div>
           <div className="r7-footer-credit">
