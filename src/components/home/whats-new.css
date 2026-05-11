@@ -6,8 +6,7 @@
 }
 
 .r7-news-section {
-  padding: 0 20px 80px;
-  margin-top: 0; /* Resetting margin as the fixed height gap is fixed */
+  padding: 80px 20px;
   background-color: var(--r7-bg);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
