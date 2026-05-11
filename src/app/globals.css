@@ -3171,9 +3171,11 @@ body.menu-locked .r7-report-banner {
   margin-bottom: 0;
 }
 
+@media (max-width: 1279px) {
   .r7deck-section {
     height: auto;
     min-height: 0;
+  }
 
   .r7deck-card {
     width: min(560px, 78vw);
