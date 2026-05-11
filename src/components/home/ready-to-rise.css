@@ -29,7 +29,15 @@
   will-change: transform;
 }
 
-/* Individual character spans injected by JS */
+/* Clip container — hides the char when it's below baseline */
+.r7-char-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;   /* align so top of wrap is flush with text top */
+  line-height: 1;
+}
+
+/* The actual character that GSAP animates upward */
 .r7-char {
   display: inline-block;
   will-change: transform;

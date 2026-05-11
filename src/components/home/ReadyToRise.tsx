@@ -7,12 +7,6 @@ import "./ready-to-rise.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * Matches the real riseatseven.com "Ready to Rise at Seven?" section:
- *  - Single huge heading that scrubs horizontally while scrolling
- *  - Each character also scrubs from yPercent=100, rotate=10 → 0,0
- *    with back.inOut(4) ease and a long stagger (scroll-scrubbed)
- */
 export function ReadyToRise() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -25,16 +19,28 @@ export function ReadyToRise() {
     if (!wrap || !trigger || !heading) return;
 
     const ctx = gsap.context(() => {
+      // ── Step 1: split into char spans FIRST ──────────────────────
+      const text = heading.textContent?.trim() || "";
+      heading.innerHTML = text
+        .split("")
+        .map((ch) =>
+          ch === " "
+            ? `<span class="r7-char-wrap"><span class="r7-char">&nbsp;</span></span>`
+            : `<span class="r7-char-wrap"><span class="r7-char">${ch}</span></span>`
+        )
+        .join("");
+
+      const chars = heading.querySelectorAll<HTMLElement>(".r7-char");
+
+      // ── Step 2: measure AFTER DOM is updated ─────────────────────
       const headingWidth = heading.scrollWidth;
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
 
-      // ── Horizontal scrub: start from right, end at left ──────────
+      // ── Step 3: Horizontal scrub — right → left as you scroll ────
       gsap.fromTo(
         heading,
-        {
-          x: headingWidth - windowWidth + windowWidth * 0.5,
-        },
+        { x: headingWidth - windowWidth + windowWidth * 0.5 },
         {
           x: -(headingWidth - windowWidth + 1000),
           ease: "none",
@@ -47,21 +53,12 @@ export function ReadyToRise() {
         }
       );
 
-      // ── Per-character reveal: tumble in from below with rotation ──
-      // Split the heading text into individual character spans
-      const text = heading.textContent || "";
-      heading.innerHTML = text
-        .split("")
-        .map((ch) =>
-          ch === " "
-            ? `<span class="r7-char" style="display:inline-block">&nbsp;</span>`
-            : `<span class="r7-char" style="display:inline-block">${ch}</span>`
-        )
-        .join("");
-
-      const chars = heading.querySelectorAll<HTMLElement>(".r7-char");
-
-      gsap.set(chars, { yPercent: 110, rotate: 10, transformOrigin: "bottom center" });
+      // ── Step 4: Per-char reveal — rises UP from below clip ────────
+      gsap.set(chars, {
+        yPercent: -115,
+        rotate: 10,
+        transformOrigin: "bottom center",
+      });
 
       gsap.to(chars, {
         yPercent: 0,
