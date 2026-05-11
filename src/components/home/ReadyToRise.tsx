@@ -9,23 +9,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function ReadyToRise() {
   const containerRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const track1Ref = useRef<HTMLDivElement>(null);
+  const track2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const text = textRef.current;
+    const t1 = track1Ref.current;
+    const t2 = track2Ref.current;
     const container = containerRef.current;
-    if (!text || !container) return;
+    if (!t1 || !t2 || !container) return;
 
     const ctx = gsap.context(() => {
-      gsap.to(text, {
-        x: "-25%", // Move left
+      // Row 1 moves left
+      gsap.to(t1, {
+        x: "-20%",
         scrollTrigger: {
           trigger: container,
           start: "top bottom",
           end: "bottom top",
-          scrub: 1.2,
+          scrub: 1,
         },
       });
+
+      // Row 2 moves right
+      gsap.fromTo(t2, 
+        { x: "-30%" },
+        {
+          x: "0%",
+          scrollTrigger: {
+            trigger: container,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        }
+      );
     }, container);
 
     return () => ctx.revert();
@@ -34,7 +51,14 @@ export function ReadyToRise() {
   return (
     <section ref={containerRef} className="r7-ready-section">
       <div className="r7-ready-container">
-        <div ref={textRef} className="r7-ready-text-wrap">
+        <div ref={track1Ref} className="r7-ready-track">
+          <span className="r7-ready-text">Ready to Rise?</span>
+          <span className="r7-ready-text">Ready to Rise?</span>
+          <span className="r7-ready-text">Ready to Rise?</span>
+          <span className="r7-ready-text">Ready to Rise?</span>
+        </div>
+        <div ref={track2Ref} className="r7-ready-track">
+          <span className="r7-ready-text">Ready to Rise?</span>
           <span className="r7-ready-text">Ready to Rise?</span>
           <span className="r7-ready-text">Ready to Rise?</span>
           <span className="r7-ready-text">Ready to Rise?</span>
