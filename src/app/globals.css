@@ -174,12 +174,7 @@ body.menu-locked .r7-report-banner {
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 40px;
   pointer-events: none;
-  transition: transform 0.6s var(--ease-r7), background 0.4s ease;
   will-change: transform;
-}
-
-.r7-site-header.is-hidden {
-  transform: translateY(-130%);
 }
 
 .r7-desktop-nav,

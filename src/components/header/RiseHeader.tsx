@@ -262,25 +262,56 @@ export function ReportBanner() {
   );
 }
 
+import { gsap } from "gsap";
+
 export function RiseHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState<ActiveKey>(null);
-  const [isVisible, setIsVisible] = useState(true);
+  const headerRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
+  const isVisible = useRef(true);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      // Show if scrolling up or at the very top
-      // Hide if scrolling down and past a threshold (100px)
-      if (currentScrollY <= 0) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY.current) {
-        setIsVisible(true);
+      const diff = currentScrollY - lastScrollY.current;
+      
+      // Ignore very small scrolls to prevent jitter
+      if (Math.abs(diff) < 8) return;
+
+      if (currentScrollY <= 20) {
+        // At the top, always show
+        if (!isVisible.current) {
+          isVisible.current = true;
+          gsap.to(headerRef.current, {
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out"
+          });
+        }
+      } else if (diff > 0 && currentScrollY > 120) {
+        // Scrolling down, hide
+        if (isVisible.current) {
+          isVisible.current = false;
+          gsap.to(headerRef.current, {
+            y: -120,
+            duration: 0.6,
+            ease: "power3.inOut"
+          });
+        }
+      } else if (diff < 0) {
+        // Scrolling up, show
+        if (!isVisible.current) {
+          isVisible.current = true;
+          gsap.to(headerRef.current, {
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out"
+          });
+        }
       }
+      
       lastScrollY.current = currentScrollY;
     };
 
@@ -315,7 +346,8 @@ export function RiseHeader() {
   return (
     <>
       <header
-        className={`r7-site-header ${!isVisible ? "is-hidden" : ""}`}
+        ref={headerRef}
+        className="r7-site-header"
         onMouseLeave={closeDropdown}
         onMouseEnter={() => {
           if (closeTimer.current) clearTimeout(closeTimer.current);
