@@ -154,20 +154,32 @@ body.menu-locked .r7-report-banner {
 ========================= */
 
 .r7-site-header {
-  position: absolute;
-  top: 41px;
-  left: 0;
-  right: 0;
+  position: fixed;
+  top: 14px;
+  left: 20px;
+  right: 20px;
   z-index: 60;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  align-items: start;
+  align-items: center;
   column-gap: 24px;
-  width: 100%;
-  min-height: 320px;
-  padding-inline: 28px;
+  max-width: 1320px;
+  margin-inline: auto;
+  height: 64px;
+  padding-inline: 24px;
   color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
   pointer-events: none;
+  transition: transform 0.6s var(--ease-r7), background 0.4s ease;
+  will-change: transform;
+}
+
+.r7-site-header.is-hidden {
+  transform: translateY(-120%);
 }
 
 .r7-desktop-nav,

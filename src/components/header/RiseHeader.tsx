@@ -265,7 +265,28 @@ export function ReportBanner() {
 export function RiseHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState<ActiveKey>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      // Show if scrolling up or at the very top
+      // Hide if scrolling down and past a threshold (100px)
+      if (currentScrollY <= 0) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const activeDropdown = dropdowns.find((item) => item.key === active);
 
@@ -294,7 +315,7 @@ export function RiseHeader() {
   return (
     <>
       <header
-        className="r7-site-header"
+        className={`r7-site-header ${!isVisible ? "is-hidden" : ""}`}
         onMouseLeave={closeDropdown}
         onMouseEnter={() => {
           if (closeTimer.current) clearTimeout(closeTimer.current);
