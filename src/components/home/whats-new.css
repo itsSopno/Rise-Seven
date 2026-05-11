@@ -217,8 +217,24 @@
   }
 
   .r7-news-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 0 20px 20px;
+    margin: 0 -20px; /* Bleed out */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .r7-news-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .r7-news-card {
+    min-width: 85vw;
+    scroll-snap-align: start;
   }
 
   .r7-news-card-img-wrap {
