@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Rise at Seven Clone",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
