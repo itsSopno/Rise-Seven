@@ -187,14 +187,14 @@ body.menu-locked .r7-report-banner {
 
 .r7-site-header.is-floating {
   top: var(--header-top, 14px);
-  left: 14px;
-  right: 14px;
-  width: calc(100% - 28px);
-  max-width: 1360px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: none;
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 40px;
 }
 
@@ -269,6 +269,8 @@ body.menu-locked .r7-report-banner {
   transition:
     color 0.3s var(--ease-r7),
     transform 0.3s var(--ease-r7);
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .r7-real-nav-link:hover,
@@ -301,6 +303,8 @@ body.menu-locked .r7-report-banner {
   transform: translateY(-10px);
   pointer-events: none;
   transition: transform 0.3s var(--ease-r7);
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 .r7-real-nav-link:hover .r7-real-work-badge,
