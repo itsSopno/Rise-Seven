@@ -12,4 +12,5 @@ export * from "./PlatformLogoStrip";
 export * from "./SearchPlatforms";
 export * from "./Services";
 export * from "./WhatsNew";
+export * from "./ReadyToRise";
 export * from './topBanner/topbanner'

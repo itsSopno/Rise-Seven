@@ -24,7 +24,7 @@ export default function Home() {
       <LegacyMarqueeSection />
       <LegacyCardsSection />
       <WhatsNew />
+      <ReadyToRise />
     </main>
   );
 }
-

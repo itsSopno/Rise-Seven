@@ -1,3 +1,5 @@
+"use client";
+
 import { newsItems } from "@/data/home";
 import { MoveRight, Clock, ArrowUpRight } from "lucide-react";
 import "./whats-new.css";
