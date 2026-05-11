@@ -267,6 +267,7 @@ import { gsap } from "gsap";
 export function RiseHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState<ActiveKey>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
   const isVisible = useRef(true);
@@ -277,6 +278,22 @@ export function RiseHeader() {
       const currentScrollY = window.scrollY;
       const diff = currentScrollY - lastScrollY.current;
       
+      // Update header top offset based on banner
+      const bannerHeight = 56; 
+      const initialOffset = 14;
+      const currentTop = Math.max(0, initialOffset + bannerHeight - currentScrollY);
+      
+      if (headerRef.current) {
+        headerRef.current.style.setProperty('--header-top', `${currentScrollY > 20 ? 14 : currentTop}px`);
+      }
+
+      // Update scrolled state for border-radius
+      if (currentScrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
       // Ignore very small scrolls to prevent jitter
       if (Math.abs(diff) < 8) return;
 
@@ -295,7 +312,7 @@ export function RiseHeader() {
         if (isVisible.current) {
           isVisible.current = false;
           gsap.to(headerRef.current, {
-            y: -120,
+            y: -150,
             duration: 0.6,
             ease: "power3.inOut"
           });
@@ -316,6 +333,9 @@ export function RiseHeader() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    // Run once on mount to set initial state
+    handleScroll();
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -347,7 +367,7 @@ export function RiseHeader() {
     <>
       <header
         ref={headerRef}
-        className="r7-site-header"
+        className={`r7-site-header ${isScrolled ? "is-floating" : ""}`}
         onMouseLeave={closeDropdown}
         onMouseEnter={() => {
           if (closeTimer.current) clearTimeout(closeTimer.current);

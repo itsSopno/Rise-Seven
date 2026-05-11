@@ -7,7 +7,7 @@
   color: #000000;
   /* padding: 9px 16px; */
   width: 100%;
-  z-index: 100;
+  z-index: 10;
   position: relative;
   display: flex;
   justify-content: center;
