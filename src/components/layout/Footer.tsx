@@ -28,14 +28,14 @@ const navCol3 = [
 ];
 
 const socialLinks = [
-  { label: "FB", href: "#", icon: "f" },
+  { label: "Facebook", href: "#", icon: "f" },
   { label: "X", href: "#", icon: "𝕏" },
-  { label: "IG", href: "#", icon: "◎" },
-  { label: "LI", href: "#", icon: "in" },
-  { label: "YT", href: "#", icon: "▶" },
-  { label: "TK", href: "#", icon: "♪" },
-  { label: "TH", href: "#", icon: "⧉" },
-  { label: "PT", href: "#", icon: "p" },
+  { label: "Instagram", href: "#", icon: "◎" },
+  { label: "LinkedIn", href: "#", icon: "in" },
+  { label: "YouTube", href: "#", icon: "▶" },
+  { label: "TikTok", href: "#", icon: "♪" },
+  { label: "Threads", href: "#", icon: "⧉" },
+  { label: "Pinterest", href: "#", icon: "p" },
 ];
 
 export function Footer() {
@@ -95,8 +95,10 @@ export function Footer() {
         {/* Big Wordmark */}
         <div className="r7-footer-wordmark">
           <div className="r7-footer-logo-container">
-            <span className="r7-footer-logo-text">Rise at Seven</span>
-            <span className="r7-footer-trademark">®</span>
+            <span className="r7-footer-logo-text">
+              Rise at Seve<span className="r7-footer-n-slash"></span>
+              <span className="r7-footer-trademark">®</span>
+            </span>
           </div>
         </div>
 
@@ -104,13 +106,13 @@ export function Footer() {
         <div className="r7-footer-bottom">
           <div className="r7-footer-legal">
             <span>© 2025 Rise at Seven Ltd. All rights reserved</span>
-            <span className="r7-footer-dot">•</span>
+            <span className="r7-footer-dot"> • </span>
             <span>Company Number 11950187</span>
-            <span className="r7-footer-dot">•</span>
+            <span className="r7-footer-dot"> • </span>
             <span>VAT Registered GB 322402945</span>
-            <span className="r7-footer-dot">•</span>
+            <span className="r7-footer-dot"> • </span>
             <a href="/privacy-policy/">Privacy Policy</a>
-            <span className="r7-footer-dot">•</span>
+            <span className="r7-footer-dot"> • </span>
             <a href="/terms-conditions/">Terms & conditions</a>
           </div>
           <div className="r7-footer-credit">
