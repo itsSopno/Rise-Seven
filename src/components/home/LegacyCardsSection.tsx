@@ -73,7 +73,7 @@ export function LegacyCardsSection() {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+=300%", 
+            end: "+=120%", 
             scrub: true,
             pin: true,
             invalidateOnRefresh: true,
