@@ -267,6 +267,7 @@ import { gsap } from "gsap";
 export function RiseHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState<ActiveKey>(null);
+  const [isReady, setIsReady] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
@@ -336,6 +337,11 @@ export function RiseHeader() {
     // Run once on mount to set initial state
     handleScroll();
     
+    // Enable transitions after initial position is set
+    requestAnimationFrame(() => {
+      setIsReady(true);
+    });
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -367,7 +373,7 @@ export function RiseHeader() {
     <>
       <header
         ref={headerRef}
-        className={`r7-site-header ${isScrolled ? "is-floating" : ""}`}
+        className={`r7-site-header ${isScrolled ? "is-floating" : ""} ${isReady ? "is-ready" : ""}`}
         onMouseLeave={closeDropdown}
         onMouseEnter={() => {
           if (closeTimer.current) clearTimeout(closeTimer.current);
